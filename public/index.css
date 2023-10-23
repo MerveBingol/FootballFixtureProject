@@ -106,11 +106,12 @@ li a.contact:hover {
   .navlinks li a:hover {
     border-bottom: none;
   }
+
   .menu-btn {
     display: block;
   }
 
-  #isChecked:checked ~ .navlinks {
+  #isChecked:checked~.navlinks {
     right: 0;
   }
 }
@@ -126,41 +127,46 @@ li a.contact:hover {
     font-size: 25px;
   }
 }
-.btns {  
-    
-    text-align: center;
-    list-style: none;
-    float:left;
-    line-height: 20px;
-    text-decoration: none;
-    margin-top: 60px;
-    margin-left: 40%;
+
+.btns {
+
+  text-align: center;
+  list-style: none;
+  float: left;
+  line-height: 20px;
+  text-decoration: none;
+  margin-top: 60px;
+  margin-left: 40%;
 }
-#fiks{
-    padding-left: 40px;
-    padding-right: 40px;
+
+#fiks {
+  padding-left: 40px;
+  padding-right: 40px;
 }
+
 .btn {
-    
-    border-radius: 8px;
-    padding: 20px;
-    color:whitesmoke;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #8f1616;
-    float: left;
-    margin: 0 5px;
+
+  border-radius: 8px;
+  padding: 20px;
+  color: whitesmoke;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #8f1616;
+  float: left;
+  margin: 0 5px;
 }
-.special{
-    background-color:#5c0f0f;
+
+.special {
+  background-color: #5c0f0f;
 }
-a{
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: whitesmoke;
+
+a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 table {
@@ -169,7 +175,11 @@ table {
   border: 1px solid black;
 }
 
-.container {}
+.container {
+
+  margin-left: 600px;
+
+}
 
 th,
 td {
