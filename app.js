@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 //const fs = require('fs');
 const path = require('path')
 const app = express();
-
 app.use(express.static("public"));
 dotenv.config();
 
@@ -14,12 +13,32 @@ async function get_matchday_matches(matchday) {
             'X-Auth-Token': '28185993d8f54afd9cdb5a945a155849',
         },
     })
+
         .then(response => response.json())
         // .then(data => console.log(data))
         .catch(err => console.error(err));
 
     return matches['matches'];
 }
+
+
+app.get('/',async (req,res)=>{
+
+    let matches = await fetch('https://api.football-data.org/v4/competitions/PL/matches', {
+        headers: {
+            method: 'GET',
+            'X-Auth-Token': '28185993d8f54afd9cdb5a945a155849',
+        },
+    })
+
+        .then(response => response.json())
+        // .then(data => console.log(data))
+        .catch(err => console.error(err));
+
+    matches = matches['matches'];
+
+    res.render("index.ejs", { matches });
+})
 
 
 //  http://localhost:5000/fixture?matchday=1 
