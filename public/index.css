@@ -177,7 +177,11 @@ table {
 
 .container {
 
+<<<<<<< HEAD
   margin-left: 600px;
+=======
+  margin-left: 500px;
+>>>>>>> Haftalar-ve-Fikstür
 
 }
 
@@ -259,4 +263,10 @@ td.firsthalf {
 
 .half {
   width: 775px;
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> Haftalar-ve-Fikstür

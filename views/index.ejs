@@ -88,18 +88,14 @@
                         <td class="details" align="left"><a href="">Detaylar</a> </td>
                     </tr>
                     <% } %>-->
-
             </tbody>
-
         </table>
-
     </div>
-
-
-
     <script>
-        var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
-        console.log(data)
+
+
+   var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
+    console.log(data)
 
         function updatefixture(elem) {
             let table = document.getElementById("fixture");
@@ -144,33 +140,49 @@
                 newRow.appendChild(detailsCell);
 
                 table.appendChild(newRow);
-
+            
             }
-
             let matches = data.filter(function (entry) {
-                return entry.matchday === matchday;
+                return entry.matchday === matchday;        
             });;
 
+     function formatTarih(utc) {
+     var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+  return new Date(utc).toLocaleString('tr-TR', options);
+
+  }
             for (let i = 0; i < matches.length; i++) {
+
                 let match = matches[i];
                 console.log(match)
-                create_row(table, match.lastUpdated, match.homeTeam.name, '-', match.awayTeam.name);
-            }
+               let formattedDate=formatTarih(match.utcDate)               
 
+                match.homeTeam.name==('Brighton &amp; Hove Albion FC')? match.homeTeam.name='Brighton':match.homeTeam.name
+                match.awayTeam.name==('Brighton &amp; Hove Albion FC')? match.awayTeam.name='Brighton':match.awayTeam.name
+
+                match.homeTeam.name==('Wolverhampton Wanderers FC')? match.homeTeam.name='Wolverhampton':match.homeTeam.name
+                match.awayTeam.name==('Wolverhampton Wanderers FC')? match.awayTeam.name='Wolverhampton':match.awayTeam.name
+
+
+if(match.score.fullTime.home!==null){
+
+
+  create_row(table, formattedDate, match.homeTeam.name, match.score.fullTime.home +' - ' +match.score.fullTime.away, match.awayTeam.name);
+}
+else{
+    create_row(table, formattedDate, match.homeTeam.name, '  ' +'-' +'  ', match.awayTeam.name);
+}
+     }
+     
             console.log(elem)
             console.log(parseInt(elem.text))
         }
-
-
         elem = {}
         elem.text = data[0].season.currentMatchday
 
         console.log('current', elem.text)
 
         updatefixture(elem)
-
     </script>
-
 </body>
-
 </html>

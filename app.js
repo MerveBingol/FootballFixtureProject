@@ -30,23 +30,59 @@ app.get('/',async (req,res)=>{
             'X-Auth-Token': '28185993d8f54afd9cdb5a945a155849',
         },
     })
+<<<<<<< HEAD
 
+=======
+>>>>>>> Haftalar-ve-Fikstür
         .then(response => response.json())
         // .then(data => console.log(data))
         .catch(err => console.error(err));
 
+<<<<<<< HEAD
     matches = matches['matches'];
 
     res.render("index.ejs", { matches });
 })
 
 
+=======
+        /*
+        let standings = await fetch('http://api.football-data.org/v4/competitions/PL/standings', {
+        headers: {
+            method: 'GET',
+            'X-Auth-Token': '28185993d8f54afd9cdb5a945a155849',
+        },
+    })
+        .then(response => response.json())
+        // .then(data => console.log(data))
+        .catch(err => console.error(err));
+
+
+
+
+    standings=standings['standings']
+   */
+  
+    matches = matches['matches'];
+
+    res.render("index.ejs", { matches });
+
+})
+
+
+
+/*
+>>>>>>> Haftalar-ve-Fikstür
 //  http://localhost:5000/fixture?matchday=1 
 app.get('/fixture', async (req, res) => {
     let matches = await get_matchday_matches(parseInt(req.query['matchday'])); // parseInt(req.params['matchday']
     res.render("index.ejs", { matches });
 });
 
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> Haftalar-ve-Fikstür
 
 const PORT = process.env.PORT || 5000;
 
