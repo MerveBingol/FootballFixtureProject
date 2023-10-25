@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script defer src="script.js"></script>
+
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <header>
+        <nav class="main-nav">
+            <input type="checkbox" id="isChecked" />
+            <label for="isChecked" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a href="index.html" class="logo">TFF</a>
+            <ul class="navlinks">
+                <li><a href="#">LİG İSMİ</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+    <ul class="btns">
+        <button class="btn" id="fiks"><a href="https://www.youtube.com">FİKSTÜR</a></button>
+        <button class="btn"><a href="https://getbootstrap.com/docs/4.0/layout/grid/">PUAN DURUMU</a></li>
+    </ul>
+
+    <div class="container">
+
+        <table class="half">
+
+            <tbody>
+                <tr>
+
+                    <td class="firsthalf">1.Devre</td>
+
+                    <% for(var i=1; i <=19; i++) { %>
+                        <td><a onclick="updatefixture(this)" %>>
+                                <%= i %>
+                            </a> </td>
+                        <% } %>
+
+                </tr>
+                <td class=" secondhalf">2.Devre</td>
+
+                <% for(var i=20; i <=38; i++) { %>
+                    <td><a onclick="updatefixture(this)">
+                            <%= i %>
+                        </a> </td>
+                    <% } %>
+
+                        <tr>
+                        </tr>
+
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <br>
+        <table id="fixture" class="matches">
+            <tbody>
+                <!--  <% for(var i=0; i < matches.length; i++) { %>
+                    <tr>
+
+                        <td class="date">21.10.2023 13:30</td>
+                        <td class="home" align="right">
+                            <%= matches[i].homeTeam.name %>
+                        </td>
+                        <td class="score">-</td>
+                        <td class="away">
+                            <%= matches[i].awayTeam.name %>
+                        </td>
+                        <td class="details" align="left"><a href="">Detaylar</a> </td>
+                    </tr>
+                    <% } %>-->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <script>
+        var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
+        console.log(data)
+
+        function updatefixture(elem) {
+            let table = document.getElementById("fixture");
+            let matchday = parseInt(elem.text);
+
+            var tableRows = document.querySelectorAll('#fixture tr');
+
+            tableRows.forEach(function (row) {
+                row.remove();
+            });
+
+            let create_row = (table, date, homeTeam, score, awayTeam) => {
+                var newRow = document.createElement('tr');
+
+                var dateCell = document.createElement('td');
+                dateCell.className = 'date';
+                dateCell.textContent = date;
+                newRow.appendChild(dateCell);
+
+                var homeCell = document.createElement('td');
+                homeCell.className = 'home';
+                homeCell.align = 'right';
+                homeCell.textContent = homeTeam;
+                newRow.appendChild(homeCell);
+
+                var scoreCell = document.createElement('td');
+                scoreCell.className = 'score';
+                scoreCell.textContent = score;
+                newRow.appendChild(scoreCell);
+
+                var awayCell = document.createElement('td');
+                awayCell.className = 'away';
+                awayCell.textContent = awayTeam;
+                newRow.appendChild(awayCell);
+
+                var detailsCell = document.createElement('td');
+                detailsCell.className = 'details';
+                var detailsLink = document.createElement('a');
+                detailsLink.href = '#'; // Detaylar sayfasının URL'si buraya gelmeli
+                detailsLink.textContent = 'Detaylar';
+                detailsCell.appendChild(detailsLink);
+                newRow.appendChild(detailsCell);
+
+                table.appendChild(newRow);
+
+            }
+
+            let matches = data.filter(function (entry) {
+                return entry.matchday === matchday;
+            });;
+
+            for (let i = 0; i < matches.length; i++) {
+                let match = matches[i];
+                console.log(match)
+                create_row(table, match.lastUpdated, match.homeTeam.name, '-', match.awayTeam.name);
+            }
+
+            console.log(elem)
+            console.log(parseInt(elem.text))
+        }
+
+
+        elem = {}
+        elem.text = data[0].season.currentMatchday
+
+        console.log('current', elem.text)
+
+        updatefixture(elem)
+
+    </script>
+
+</body>
+
+</html>
