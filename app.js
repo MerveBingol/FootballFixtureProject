@@ -1,9 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const path = require('path')
+const path = require('path');
+const { render } = require('ejs');
 const app = express();
 app.use(express.static("public"));
 dotenv.config();
+
+
+
 
 async function get_matchday_matches(matchday) {
     let matches = await fetch(`https://api.football-data.org/v4/competitions/PL/matches?matchday=${matchday}`, {
@@ -41,7 +45,9 @@ app.get('/',async (req,res)=>{
 
 })
 
-
+app.get('/league-table',async (req,res)=>{
+    res.render("league-table.ejs");
+})
 
 
 const PORT = process.env.PORT || 5000;
