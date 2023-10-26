@@ -125,7 +125,7 @@ header {
   line-height: 20px;
   text-decoration: none;
   margin-top: 60px;
-  margin-left: 40%;
+  margin-left: 35%;
 }
 
 #fiks {
@@ -255,6 +255,13 @@ td.firsthalf {
 
 .half {
   width: 775px;
+}
+
+
+.league-table{
+  text-align: center;
+  margin: 10%;
+  margin-top: 10%;
 }
 
 
