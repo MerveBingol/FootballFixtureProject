@@ -46,7 +46,7 @@ header {
 .navlinks li a {
   color: white;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 35px;
   text-transform: uppercase;
   transition: all 0.3s linear 0s;
 }
@@ -89,7 +89,7 @@ header {
   }
 
   .navlinks li a {
-    font-size: 20px;
+    font-size: 10px;
   }
 
   .navlinks li a:hover {
@@ -125,7 +125,7 @@ header {
   line-height: 20px;
   text-decoration: none;
   margin-top: 60px;
-  margin-left: 35%;
+  margin-left: 38%;
 }
 
 #fiks {
@@ -207,7 +207,6 @@ table tr {
 
 
 
-
 .half {
   border-collapse: collapse;
 }
@@ -260,8 +259,36 @@ td.firsthalf {
 
 .league-table{
   text-align: center;
-  margin: 10%;
+  margin: 40%;
   margin-top: 10%;
+ 
 }
 
 
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

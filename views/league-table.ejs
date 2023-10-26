@@ -46,16 +46,17 @@
 
     <table class="league-table" border="1">
         <tr>
-            <th>Sıra</th>
-            <th>Takım</th>
-            <th>Oynanan Maç</th>
-            <th>Kazanılan Maç</th>
-            <th>Berabere</th>
-            <th>Kaybedilen Maç</th>
-            <th>Puan</th>
-            <th>Atılan Gol</th>
-            <th>Yenilen Gol</th>
-            <th>Gol Farkı</th>
+            <th><div class="tooltip">S<span class="tooltiptext">Sıralama</span></div>
+            <th><div class="tooltip" >T<span class="tooltiptext">Takım</span></div>
+            <th><div class="tooltip">O<span class="tooltiptext">Oynanan</span></div>
+            <th><div class="tooltip">G<span class="tooltiptext">Galibiyet</span></div>
+            <th><div class="tooltip">B<span class="tooltiptext">Berabere</span></div>
+            <th><div class="tooltip">M<span class="tooltiptext">Mağlubiyet</span></div>
+            <th><div class="tooltip">A<span class="tooltiptext">Atılan Gol</span></div>
+            <th><div class="tooltip">Y<span class="tooltiptext">Yenilen Gol</span></div>
+            <th><div class="tooltip">Av<span class="tooltiptext">Averaj</span></div>
+            <th><div class="tooltip">P<span class="tooltiptext">Puan</span></div>
+                      
         </tr>
         <tbody>
             <% standings.forEach(team => { %>
@@ -65,11 +66,11 @@
                     <td><%= team.playedGames %></td>
                     <td><%= team.won %></td>
                     <td><%= team.draw %></td>
-                    <td><%= team.lost %></td>
-                    <td><%= team.points %></td>
+                    <td><%= team.lost %></td>   
                     <td><%= team.goalsFor %></td>
                     <td><%= team.goalsAgainst %></td>
                     <td><%= team.goalDifference %></td>
+                    <td><%= team.points %></td>
                 </tr>
             <% }); %>
     <tbody>        
