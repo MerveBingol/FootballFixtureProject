@@ -125,7 +125,7 @@ header {
   line-height: 20px;
   text-decoration: none;
   margin-top: 60px;
-  margin-left: 38%;
+  margin-left: 10%;
 }
 
 #fiks {
@@ -264,17 +264,26 @@ td.firsthalf {
  
 }
 
-.logo{
-margin-left: 5%;
-}
 .minions-united {
   list-style: none;
-  float: right;
+  float: left;
   line-height: 90px;
   margin: 0;
   padding: 0;
 }
 
+.minions-united li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.minions-united li a {
+  color: white;
+  text-decoration: none;
+  font-size: 35px;
+  text-transform: uppercase;
+  transition: all 0.3s linear 0s;
+}
 
 .tooltip {
   position: relative;
