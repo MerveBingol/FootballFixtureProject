@@ -84,7 +84,6 @@ header {
     transition: all 0.5s;
   }
 
-
   .navlinks li {
     display: block;
   }
@@ -147,8 +146,7 @@ header {
   float: left;
   margin: 0 5px;
 }
-
-.btn a:hover {
+.btn a:hover{
   color: whitesmoke;
   padding-bottom: 7px;
   border-bottom: 2px solid whitesmoke;
@@ -174,8 +172,8 @@ table {
 }
 
 .container {
-  margin-bottom: 10%;
-  margin-left: 25%;
+
+  margin-left: 500px;
 
 }
 
@@ -259,7 +257,7 @@ td.firsthalf {
 }
 
 
-.league-table {
+.league-table{
   text-align: center;
   margin: 40%;
   margin-top: 10%;
