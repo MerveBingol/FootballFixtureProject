@@ -12,12 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap"
+        rel="stylesheet">
+
 
 
 </head>
@@ -40,7 +42,7 @@
         </nav>
     </header>
     <ul class="btns">
-        <button class="btn" id="fiks"><a href="#">FİKSTÜR</a></button>
+        <button class="btn" id="fiks"><a href="/index">FİKSTÜR</a></button>
         <button class="btn"><a href="league-table">PUAN DURUMU</a></li>
     </ul>
 
@@ -59,7 +61,7 @@
                       
         </tr>
         <tbody>
-            <% standings.forEach(team => { %>
+            <% standings.forEach(team=> { %>
                 <tr>
                     <td><%= team.position %></td>
                     <td><%= team.team.name %></td>
@@ -72,11 +74,12 @@
                     <td><%= team.goalDifference %></td>
                     <td><%= team.points %></td>
                 </tr>
-            <% }); %>
-    <tbody>        
+                <% }); %>
+        <tbody>
     </table>
 
 
 
 </body>
+
 </html>

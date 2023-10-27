@@ -12,12 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap"
+        rel="stylesheet">
+
 
 
 </head>
@@ -80,8 +82,8 @@
         <br>
         <br>
         <table id="fixture" class="matches">
-            <tbody>
-                  <% for(var i=0; i < matches.length; i++) { %>
+            <!-- <tbody>
+                <% for(var i=0; i < matches.length; i++) { %>
                     <tr>
 
                         <td class="date">21.10.2023 13:30</td>
@@ -96,14 +98,14 @@
                     </tr>
                     <% } %>
 
-            </tbody>
+            </tbody> -->
         </table>
     </div>
     <script>
 
 
-   var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
-    console.log(data)
+        var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
+        console.log(data)
 
         function updatefixture(elem) {
             let table = document.getElementById("fixture");
@@ -115,13 +117,20 @@
                 row.remove();
             });
 
-            let create_row = (table, date, homeTeam, score, awayTeam) => {
+            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL) => {
                 var newRow = document.createElement('tr');
 
                 var dateCell = document.createElement('td');
                 dateCell.className = 'date';
                 dateCell.textContent = date;
                 newRow.appendChild(dateCell);
+
+                var homeImgCell = document.createElement("img");
+                homeImgCell.setAttribute('src', homeTeamLogoURL);
+                homeImgCell.setAttribute('height', 65);
+                homeImgCell.setAttribute('width', 65);
+                newRow.appendChild(homeImgCell);
+
 
                 var homeCell = document.createElement('td');
                 homeCell.className = 'home';
@@ -139,6 +148,14 @@
                 awayCell.textContent = awayTeam;
                 newRow.appendChild(awayCell);
 
+
+
+                var awayImgCell = document.createElement("img");
+                awayImgCell.setAttribute('src', awayTeamLogoURL);
+                awayImgCell.setAttribute('height', 65);
+                awayImgCell.setAttribute('width', 65);
+                newRow.appendChild(awayImgCell);
+
                 var detailsCell = document.createElement('td');
                 detailsCell.className = 'details';
                 var detailsLink = document.createElement('a');
@@ -148,40 +165,55 @@
                 newRow.appendChild(detailsCell);
 
                 table.appendChild(newRow);
-            
+
             }
             let matches = data.filter(function (entry) {
-                return entry.matchday === matchday;        
+                return entry.matchday === matchday;
             });;
 
-     function formatTarih(utc) {
-     var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-  return new Date(utc).toLocaleString('tr-TR', options);
 
-  }
+            function getDayOfWeek(utcDate) {
+                var daysOfWeek = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+                var date = new Date(utcDate);
+                var dayOfWeek = date.getUTCDay();
+                return daysOfWeek[dayOfWeek];
+            }
+
+
+
+
+
+            function formatTarih(utc) {
+                var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+                return new Date(utc).toLocaleString('tr-TR', options);
+
+            }
             for (let i = 0; i < matches.length; i++) {
 
                 let match = matches[i];
                 console.log(match)
-               let formattedDate=formatTarih(match.utcDate)               
+                let formattedDate = formatTarih(match.utcDate)
 
-                match.homeTeam.name==('Brighton &amp; Hove Albion FC')? match.homeTeam.name='Brighton':match.homeTeam.name
-                match.awayTeam.name==('Brighton &amp; Hove Albion FC')? match.awayTeam.name='Brighton':match.awayTeam.name
+                match.homeTeam.name == ('Brighton &amp; Hove Albion FC') ? match.homeTeam.name = 'Brighton' : match.homeTeam.name
+                match.awayTeam.name == ('Brighton &amp; Hove Albion FC') ? match.awayTeam.name = 'Brighton' : match.awayTeam.name
 
-                match.homeTeam.name==('Wolverhampton Wanderers FC')? match.homeTeam.name='Wolverhampton':match.homeTeam.name
-                match.awayTeam.name==('Wolverhampton Wanderers FC')? match.awayTeam.name='Wolverhampton':match.awayTeam.name
-
-
-if(match.score.fullTime.home!==null){
+                match.homeTeam.name == ('Wolverhampton Wanderers FC') ? match.homeTeam.name = 'Wolverhampton' : match.homeTeam.name
+                match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
 
 
-  create_row(table, formattedDate, match.homeTeam.name, match.score.fullTime.home +' - ' +match.score.fullTime.away, match.awayTeam.name);
-}
-else{
-    create_row(table, formattedDate, match.homeTeam.name, '  ' +'-' +'  ', match.awayTeam.name);
-}
-     }
-     
+                if (match.score.fullTime.home !== null) {
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest);
+                }
+                else {
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest);
+                }
+
+
+
+
+
+            }
+
             console.log(elem)
             console.log(parseInt(elem.text))
         }
@@ -193,4 +225,5 @@ else{
         updatefixture(elem)
     </script>
 </body>
+
 </html>

@@ -42,23 +42,20 @@ app.get('/league-table', async (req, res) => {
 });
 
 
-async function get_matchday_matches(matchday) {
-    let matches = await fetch(`https://api.football-data.org/v4/competitions/PL/matches?matchday=${matchday}`, {
-        headers: {
-            method: 'GET',
-            'X-Auth-Token': '28185993d8f54afd9cdb5a945a155849',
-        },
-    })
+app.get('/conf',async (req,res)=>{
+    let livedata = await fetch('https://livescore-api.com/api-client/scores/live.json?competition_id=2&key=zIFEF40GZSg5tGZK&secret=Ll89Hz5AS1yao1OXKtCpyD6yvmDY2DJO')
+    .then(response => response.json())
+    .catch(err => console.error(err));
+  
+    console.log(livedata['data']['match'][0])
 
-        .then(response => response.json())
-      
-        .catch(err => console.error(err));
-
-    return matches['matches'];
-}
+    //res.render("index.ejs", { matches });
+})
 
 
-app.get('/',async (req,res)=>{
+
+
+app.get('/index',async (req,res)=>{
 
     let matches = await fetch('https://api.football-data.org/v4/competitions/PL/matches', {
         headers: {
