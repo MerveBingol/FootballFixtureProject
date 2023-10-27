@@ -14,11 +14,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+
 
 </head>
 
 <body>
-
 
     <header>
         <nav class="main-nav">
@@ -26,92 +32,74 @@
             <label for="isChecked" class="menu-btn">
                 <i class="fas fa-bars"></i>
             </label>
-            <a href="index.html" class="logo">TFF</a>
+            <ul class="minions-united">
+
+            <li><a class="logo" href="index.ejs"><img src="img/Minions-United.png" alt="premier lig logosu" width="70px" height="90px"></a></li>
+            <li><a class="minions-united" href="#">Minions United</a></li>
+
+            </ul>
+
             <ul class="navlinks">
-                <li><a href="#">LİG İSMİ</a></li>
+
+                <li><a href="#">PREMIER LIG 2023/2024</a></li>
 
 
             </ul>
         </nav>
+       
     </header>
+  
+       <!-- <img id="arkaplan"  src="img/arkaplan.jpg" alt="Arkaplan sotosu">-->
+   
     <ul class="btns">
-        <button class="btn" id="fiks"><a href="https://www.youtube.com">FİKSTÜR</a></button>
-        <button class="btn"><a href="https://getbootstrap.com/docs/4.0/layout/grid/">PUAN DURUMU</a></li>
+        <button class="btn" id="fiks"><a href="/index">FİKSTÜR</a></button>
+        <button class="btn"><a href="../league-table">PUAN DURUMU</a></li>
     </ul>
 
-    <div class="container">
 
-        <table class="half">
 
-            <tbody>
-                <tr>
-
-                    <td class="firsthalf">1.Devre</td>
-
-                    <% for(var i=1; i <=19; i++) { %>
-                        <td><a onclick="updatefixture(this)" %>>
-                                <%= i %>
-                            </a> </td>
-                        <% } %>
-
-                </tr>
-                <td class=" secondhalf">2.Devre</td>
-
-                <% for(var i=20; i <=38; i++) { %>
-                    <td><a onclick="updatefixture(this)">
-                            <%= i %>
-                        </a> </td>
-                    <% } %>
-
-                        <tr>
-                        </tr>
-
-            </tbody>
-        </table>
+    <div class="slider-container">
+        <button id="prev">&lt</button>
+        <div class="slider">
+            
+            <% for(var i=1; i <=38; i++) { %>
+                <td><a class="slide" onclick="updatefixture(this)" %>>
+                        <%= i %>
+                    </a> </td>
+                <% } %>
+            
+        </div>
+                            <button id="next">&gt</button>
+                            <script src="slider.js"></script>
+                        </div>
+                    
 
         <br>
         <br>
         <br>
         <table id="fixture" class="matches">
-            <tbody>
-                <!--  <% for(var i=0; i < matches.length; i++) { %>
-                    <tr>
-
-                        <td class="date">21.10.2023 13:30</td>
-                        <td class="home" align="right">
-                            <%= matches[i].homeTeam.name %>
-                        </td>
-                        <td class="score">-</td>
-                        <td class="away">
-                            <%= matches[i].awayTeam.name %>
-                        </td>
-                        <td class="details" align="left"><a href="">Detaylar</a> </td>
-                    </tr>
-                    <% } %>-->
-
-            </tbody>
-
+        
         </table>
-
-    </div>
-
-
+    
 
     <script>
+
+
         var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
         console.log(data)
 
         function updatefixture(elem) {
             let table = document.getElementById("fixture");
-            let matchday = parseInt(elem.text);
-
+            let matchday = parseInt(elem.text)
+            
             var tableRows = document.querySelectorAll('#fixture tr');
 
             tableRows.forEach(function (row) {
                 row.remove();
             });
 
-            let create_row = (table, date, homeTeam, score, awayTeam) => {
+           
+            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL) => {
                 var newRow = document.createElement('tr');
 
                 var dateCell = document.createElement('td');
@@ -119,7 +107,13 @@
                 dateCell.textContent = date;
                 newRow.appendChild(dateCell);
 
-                var homeCell = document.createElement('td');
+                var homeImgCell = document.createElement("img");
+                homeImgCell.setAttribute('src', homeTeamLogoURL);
+                homeImgCell.setAttribute('height', 65);
+                homeImgCell.setAttribute('width', 65);
+                newRow.appendChild(homeImgCell);
+
+                 var homeCell = document.createElement('td');
                 homeCell.className = 'home';
                 homeCell.align = 'right';
                 homeCell.textContent = homeTeam;
@@ -135,6 +129,12 @@
                 awayCell.textContent = awayTeam;
                 newRow.appendChild(awayCell);
 
+                var awayImgCell = document.createElement("img");
+                awayImgCell.setAttribute('src', awayTeamLogoURL);
+                awayImgCell.setAttribute('height', 65);
+                awayImgCell.setAttribute('width', 65);
+                newRow.appendChild(awayImgCell);
+
                 var detailsCell = document.createElement('td');
                 detailsCell.className = 'details';
                 var detailsLink = document.createElement('a');
@@ -146,31 +146,54 @@
                 table.appendChild(newRow);
 
             }
-
             let matches = data.filter(function (entry) {
                 return entry.matchday === matchday;
             });;
 
-            for (let i = 0; i < matches.length; i++) {
-                let match = matches[i];
-                console.log(match)
-                create_row(table, match.lastUpdated, match.homeTeam.name, '-', match.awayTeam.name);
+
+            function getDayOfWeek(utcDate) {
+                var daysOfWeek = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+                var date = new Date(utcDate);
+                var dayOfWeek = date.getUTCDay();
+                return daysOfWeek[dayOfWeek];
             }
 
+            function formatTarih(utc) {
+                var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+                return new Date(utc).toLocaleString('tr-TR', options);
+
+            }
+            for (let i = 0; i < matches.length; i++) {
+
+                let match = matches[i];
+                console.log(match)
+                let formattedDate = formatTarih(match.utcDate)
+
+                match.homeTeam.name == ('Brighton &amp; Hove Albion FC') ? match.homeTeam.name = 'Brighton' : match.homeTeam.name
+                match.awayTeam.name == ('Brighton &amp; Hove Albion FC') ? match.awayTeam.name = 'Brighton' : match.awayTeam.name
+
+                match.homeTeam.name == ('Wolverhampton Wanderers FC') ? match.homeTeam.name = 'Wolverhampton' : match.homeTeam.name
+                match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
+
+
+                if (match.score.fullTime.home !== null) {
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest);
+                }
+                else {
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest);
+                }
+            }
             console.log(elem)
             console.log(parseInt(elem.text))
         }
-
-
         elem = {}
         elem.text = data[0].season.currentMatchday
 
         console.log('current', elem.text)
 
         updatefixture(elem)
-
     </script>
-
+   
 </body>
 
 </html>

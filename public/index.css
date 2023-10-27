@@ -1,15 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-@font-face {
-  font-family: AstroSpace;
+/*@font-face {
+  font-family: 'Orbitron', sans-serif; 
   src: url(/fonts/AstroSpace.ttf);
-}
+}*/
+
 
 body {
+  background-image:url("img/arkaplan.jpg");
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 100%;
+  font-family: 'Orbitron', sans-serif;
   background-color: #fff;
+  background-attachment:fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+
 }
 
 header {
@@ -22,12 +33,12 @@ header {
 
 .logo {
   color: white;
-  line-height: 90px;
+  line-height: 150px;
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
   margin-left: 30px;
-  font-family: "AstroSpace", sans-serif;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .navlinks {
@@ -46,7 +57,7 @@ header {
 .navlinks li a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 35px;
   text-transform: uppercase;
   transition: all 0.3s linear 0s;
 }
@@ -57,18 +68,7 @@ header {
   border-bottom: 2px solid whitesmoke;
 }
 
-/* li a.contact {
-  background-color: #00adb5;
-  padding: 9px 20px;
-  border-radius: 50px;
-  transition: all 0.3s linear 0s;
-}
 
-li a.contact:hover {
-  background-color: #047e85;
-  color: white;
-  border-bottom: none;
-} */
 
 .menu-btn {
   color: white;
@@ -100,7 +100,7 @@ li a.contact:hover {
   }
 
   .navlinks li a {
-    font-size: 20px;
+    font-size: 10px;
   }
 
   .navlinks li a:hover {
@@ -129,19 +129,23 @@ li a.contact:hover {
 }
 
 .btns {
-
+position: absolute;
+bottom: 530px;
+left:25%;
   text-align: center;
   list-style: none;
   float: left;
   line-height: 20px;
   text-decoration: none;
-  margin-top: 60px;
-  margin-left: 40%;
+  margin-top: 10px;
+  margin-left: 10%; 
+  z-index: 1;
+ 
 }
 
 #fiks {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
 .btn {
@@ -149,12 +153,18 @@ li a.contact:hover {
   border-radius: 8px;
   padding: 20px;
   color: whitesmoke;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
   font-weight: bold;
   background-color: #8f1616;
   float: left;
   margin: 0 5px;
+}
+.btn a:hover{
+  color: whitesmoke;
+  padding-bottom: 7px;
+  border-bottom: 2px solid whitesmoke;
+  transition: all 0.3s linear 0s;
 }
 
 .special {
@@ -162,8 +172,8 @@ li a.contact:hover {
 }
 
 a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   color: whitesmoke;
@@ -177,7 +187,7 @@ table {
 
 .container {
 
-  margin-left: 600px;
+  margin-left: 500px;
 
 }
 
@@ -209,7 +219,7 @@ table tr {
   align-items: center;
 }
 
-.home {}
+
 
 
 .half {
@@ -260,3 +270,143 @@ td.firsthalf {
 .half {
   width: 775px;
 }
+.slider-container {
+  position: absolute;
+  top:230px;
+  left:390px;
+  width: 850px;
+  height:65px;
+  margin: 0 auto;
+  text-align: center;
+  background-color:#8f1616;
+}
+
+.slider {
+  width:700px;
+  display:inline-flex;
+  overflow:hidden;
+  white-space: nowrap;
+ padding-left: 5px;
+ 
+}
+
+.slide {
+  Font-weight:bold;
+  width: 50px;
+  height: 30px;
+  text-align:center;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.slide:hover{
+  background-color:#0056b3;
+}
+
+#prev, #next {
+  background-color:black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#prev:hover, #next:hover {
+  background-color: #0056b3;
+}
+#fixture{
+  position:absolute;
+   top:320px;
+  left:290px;
+   width:1050px;
+  height:300px;
+  opacity:0.7;
+  
+}
+#sayi{
+  padding-left: 5px;
+}
+.league-table{
+ position: absolute;
+ top:100px;
+width:60%;
+height:200px;
+  text-align: center;
+  margin: 20%;
+  margin-top: 10%;
+  opacity: 0.7;
+
+ 
+}
+.minions-united {
+  list-style: none;
+  float: left;
+  line-height: 90px;
+  margin: 0;
+  padding: 0;
+}
+
+.minions-united li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.minions-united li a {
+  color: white;
+  text-decoration: none;
+  font-size: 35px;
+  text-transform: uppercase;
+  transition: all 0.3s linear 0s;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.league-table td{
+  padding: 20px;
+}
+
+.league-table td p{
+  padding-top: 5px;
+
+}
+
+img{
+  float: left;
+}                                         
+#arkaplan{
+  z-index:-1;
+  transform: translateY(-40px);
+  width:100%;
+  height:1000px;
+
+}
+.sayfa{
+  width: 100%;
+  height:100%;
+}
+
