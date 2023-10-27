@@ -266,6 +266,16 @@ td.firsthalf {
  
 }
 
+.logo{
+margin-left: 5%;
+}
+.minions-united {
+  list-style: none;
+  float: right;
+  line-height: 90px;
+  margin: 0;
+  padding: 0;
+}
 
 
 .tooltip {
