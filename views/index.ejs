@@ -82,117 +82,158 @@
         </table>
     
 
-    <script>
+        <script>
 
 
-        var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
-        console.log(data)
-
-        function updatefixture(elem) {
-            let table = document.getElementById("fixture");
-            let matchday = parseInt(elem.text)
-            
-            var tableRows = document.querySelectorAll('#fixture tr');
-
-            tableRows.forEach(function (row) {
-                row.remove();
-            });
-
+            var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
            
-            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL) => {
-                var newRow = document.createElement('tr');
-
-                var dateCell = document.createElement('td');
-                dateCell.className = 'date';
-                dateCell.textContent = date;
-                newRow.appendChild(dateCell);
-
-                var homeImgCell = document.createElement("img");
-                homeImgCell.setAttribute('src', homeTeamLogoURL);
-                homeImgCell.setAttribute('height', 65);
-                homeImgCell.setAttribute('width', 65);
-                newRow.appendChild(homeImgCell);
-
-                 var homeCell = document.createElement('td');
-                homeCell.className = 'home';
-                homeCell.align = 'right';
-                homeCell.textContent = homeTeam;
-                newRow.appendChild(homeCell);
-
-                var scoreCell = document.createElement('td');
-                scoreCell.className = 'score';
-                scoreCell.textContent = score;
-                newRow.appendChild(scoreCell);
-
-                var awayCell = document.createElement('td');
-                awayCell.className = 'away';
-                awayCell.textContent = awayTeam;
-                newRow.appendChild(awayCell);
-
-                var awayImgCell = document.createElement("img");
-                awayImgCell.setAttribute('src', awayTeamLogoURL);
-                awayImgCell.setAttribute('height', 65);
-                awayImgCell.setAttribute('width', 65);
-                newRow.appendChild(awayImgCell);
-
-                var detailsCell = document.createElement('td');
-                detailsCell.className = 'details';
-                var detailsLink = document.createElement('a');
-                detailsLink.href = '#'; // Detaylar sayfasının URL'si buraya gelmeli
-                detailsLink.textContent = 'Detaylar';
-                detailsCell.appendChild(detailsLink);
-                newRow.appendChild(detailsCell);
-
-                table.appendChild(newRow);
-
-            }
-            let matches = data.filter(function (entry) {
-                return entry.matchday === matchday;
-            });;
-
-
-            function getDayOfWeek(utcDate) {
-                var daysOfWeek = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-                var date = new Date(utcDate);
-                var dayOfWeek = date.getUTCDay();
-                return daysOfWeek[dayOfWeek];
-            }
-
-            function formatTarih(utc) {
-                var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-                return new Date(utc).toLocaleString('tr-TR', options);
-
-            }
-            for (let i = 0; i < matches.length; i++) {
-
-                let match = matches[i];
-                console.log(match)
-                let formattedDate = formatTarih(match.utcDate)
-
-                match.homeTeam.name == ('Brighton &amp; Hove Albion FC') ? match.homeTeam.name = 'Brighton' : match.homeTeam.name
-                match.awayTeam.name == ('Brighton &amp; Hove Albion FC') ? match.awayTeam.name = 'Brighton' : match.awayTeam.name
-
-                match.homeTeam.name == ('Wolverhampton Wanderers FC') ? match.homeTeam.name = 'Wolverhampton' : match.homeTeam.name
-                match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
-
-
-                if (match.score.fullTime.home !== null) {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest);
+    
+    
+         
+            var liveData=JSON.parse('<%= JSON.stringify(livematches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
+            console.log(liveData)
+    
+    
+            function updatefixture(elem) {
+                let table = document.getElementById("fixture");
+                let matchday = parseInt(elem.text)
+                
+                var tableRows = document.querySelectorAll('#fixture tr');
+    
+                tableRows.forEach(function (row) {
+                    row.remove();
+                });
+    
+               
+                let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL) => {
+                    var newRow = document.createElement('tr');
+    
+                    var dateCell = document.createElement('td');
+                    dateCell.className = 'date';
+                    dateCell.textContent = date;
+                    newRow.appendChild(dateCell);
+    
+                    var homeImgCell = document.createElement("img");
+                    homeImgCell.setAttribute('src', homeTeamLogoURL);
+                    homeImgCell.setAttribute('height', 65);
+                    homeImgCell.setAttribute('width', 65);
+                    newRow.appendChild(homeImgCell);
+    
+                     var homeCell = document.createElement('td');
+                    homeCell.className = 'home';
+                    homeCell.align = 'right';
+                    homeCell.textContent = homeTeam;
+                    newRow.appendChild(homeCell);
+    
+                    var scoreCell = document.createElement('td');
+                    scoreCell.className = 'score';
+                    scoreCell.textContent = score;
+                    scoreCell.setAttribute('id', homeTeam + awayTeam)
+                    newRow.appendChild(scoreCell);
+    
+                    var awayCell = document.createElement('td');
+                    awayCell.className = 'away';
+                    awayCell.textContent = awayTeam;
+                    newRow.appendChild(awayCell);
+    
+                    var awayImgCell = document.createElement("img");
+                    awayImgCell.setAttribute('src', awayTeamLogoURL);
+                    awayImgCell.setAttribute('height', 65);
+                    awayImgCell.setAttribute('width', 65);
+                    newRow.appendChild(awayImgCell);
+    
+                    var detailsCell = document.createElement('td');
+                    detailsCell.className = 'details';
+                    var detailsLink = document.createElement('a');
+                    detailsLink.href = '#'; // Detaylar sayfasının URL'si buraya gelmeli
+                    detailsLink.textContent = 'Detaylar';
+                    detailsCell.appendChild(detailsLink);
+                    newRow.appendChild(detailsCell);
+    
+                    table.appendChild(newRow);
+    
                 }
-                else {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest);
+                let matches = data.filter(function (entry) {
+                    return entry.matchday === matchday;
+                });;
+    
+    
+                function getDayOfWeek(utcDate) {
+                    var daysOfWeek = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+                    var date = new Date(utcDate);
+                    var dayOfWeek = date.getUTCDay();
+                    return daysOfWeek[dayOfWeek];
+                }
+    
+                function formatTarih(utc) {
+                    var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+                    return new Date(utc).toLocaleString('tr-TR', options);
+    
+                }
+                for (let i = 0; i < matches.length; i++) {
+    
+                    let match = matches[i];
+                    let formattedDate = formatTarih(match.utcDate)
+    
+                    match.homeTeam.name == ('Brighton &amp; Hove Albion FC') ? match.homeTeam.name = 'Brighton' : match.homeTeam.name
+                    match.awayTeam.name == ('Brighton &amp; Hove Albion FC') ? match.awayTeam.name = 'Brighton' : match.awayTeam.name
+    
+                    match.homeTeam.name == ('Wolverhampton Wanderers FC') ? match.homeTeam.name = 'Wolverhampton' : match.homeTeam.name
+                    match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
+    
+                    if (match.score.fullTime.home !== null) {
+                        create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest);
+                    }
+                    else {
+                        create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest);
+                    }
                 }
             }
-            console.log(elem)
-            console.log(parseInt(elem.text))
-        }
-        elem = {}
-        elem.text = data[0].season.currentMatchday
-
-        console.log('current', elem.text)
-
-        updatefixture(elem)
-    </script>
+            elem = {}
+            elem.text = data[0].season.currentMatchday
+            
+    
+            let todaymatches = data.filter(function (entry) {
+                let today = new Date()
+                let matchDate = new Date(entry.utcDate)    
+                    return matchDate.getFullYear() === today.getFullYear() && matchDate.getMonth() === today.getMonth() && matchDate.getDay() === today.getDay();
+                });;
+    
+            console.log(todaymatches)
+    
+            var liveMap = new Map();
+    
+            
+    
+            if( liveData.length ) {
+            todaymatches.forEach((match, index) =>{
+                liveData.forEach((live_match, index) =>{
+                    if(match.homeTeam.name  == live_match.home_name && match.awayTeam.name  == live_match.away_name) {
+                        liveMap.set(match.homeTeam.name + match.awayTeam.name, live_match.events)
+                    }
+                })
+            })
+            }
+    
+            let date = new Date();
+            let sec = date.getSeconds();
+            setTimeout(()=>{
+            setInterval(()=>{
+    
+                for (const [key, value] of liveMap.entries()) {
+                    const element = document.getElementById(key);
+    
+                    let lv =  fetch(value.replace(/&amp;/g, '&')).then(response => response.json()).then((v) =>{
+                        element.textContent = v.data.match.ft_score + '  ' + v.data.match.time;
+                    });
+    
+                }
+    
+            }, 60 * 1000);
+            }, (60 - sec) * 1000);
+    
+            updatefixture(elem)
+        </script>
    
 </body>
 

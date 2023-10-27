@@ -52,9 +52,6 @@ app.get('/conf',async (req,res)=>{
     //res.render("index.ejs", { matches });
 })
 
-
-
-
 app.get('/index',async (req,res)=>{
 
     let matches = await fetch('https://api.football-data.org/v4/competitions/PL/matches', {
@@ -67,12 +64,15 @@ app.get('/index',async (req,res)=>{
         // .then(data => console.log(data))
         .catch(err => console.error(err));
 
-      
+        let livematches = await fetch(`https://livescore-api.com/api-client/scores/live.json?key=zIFEF40GZSg5tGZK&secret=Ll89Hz5AS1yao1OXKtCpyD6yvmDY2DJO`)
+        .then(response => response.json())
+        .catch(err => console.error(err)); //competition_id=2&
   
     matches = matches['matches'];
+    livematches=livematches['data']['match']
+    //console.log(livematches)
 
-    res.render("index.ejs", { matches });
-
+    res.render("index.ejs", { matches,livematches });
 })
 
 
