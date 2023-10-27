@@ -27,7 +27,7 @@ app.get('/league-table', async (req, res) => {
           team:'1'
     },
     headers:{
-          'X-RapidAPI-Key': 'caa1494095msh51251f309697f53p1607c8jsneb6421b7c32b',
+          'X-RapidAPI-Key': '6d7497497amsh26c045cfb9d92fap1725eajsn34deead94feb',
           'X-RapidAPI-Host': 'football-web-pages1.p.rapidapi.com'
     }
   });
