@@ -82,14 +82,9 @@
 
     </table>
 
-
     <script>
 
-
         var data = JSON.parse('<%= JSON.stringify(matches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
-
-
-
 
         var liveData = JSON.parse('<%= JSON.stringify(livematches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
         console.log(liveData)
@@ -106,7 +101,7 @@
             });
 
 
-            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL) => {
+            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL,details) => {
                 var newRow = document.createElement('tr');
 
                 var dateCell = document.createElement('td');
@@ -147,7 +142,7 @@
                 detailsCell.className = 'details';
                 var detailsLink = document.createElement('a');
                 detailsLink.href = '#'; // Detaylar sayfasının URL'si buraya gelmeli
-                detailsLink.textContent = 'Detaylar';
+                detailsLink.textContent = details;
                 detailsCell.appendChild(detailsLink);
                 newRow.appendChild(detailsCell);
 
@@ -172,14 +167,6 @@
 
             }
 
-
-
-
-
-
-
-
-
             for (let i = 0; i < matches.length; i++) {
 
                 let match = matches[i];
@@ -192,18 +179,15 @@
                 match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
 
                 if (match.score.fullTime.home !== null) {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest);
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest,"İY : "+match.score.halfTime.home+"-"+match.score.halfTime.away);
                 }
                 else {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest);
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest,"İY :  "+match.score.halfTime.home+"-"+match.score.halfTime.away);
                 }
             }
 
             updatelivematches()
-
-
         }
-
 
         elem = {}
         elem.text = data[0].season.currentMatchday
@@ -245,9 +229,7 @@
 
             }
 
-
         }
-
         let date = new Date();
         let sec = date.getSeconds();
         setTimeout(() => {
