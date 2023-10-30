@@ -72,45 +72,50 @@
             <th title="Yenilen Gol">Y</th>
             <th title="Averaj">Av</th>
             <th title="Puan">P</th>
+            <th title="Puan">Form Tablosu</th>
         </tr>
         <tbody>
-            <% standings.forEach(team=> { %>
+
+
+            <% standingss.forEach(team=> { %>
                 <tr>
 
                     <td>
-                        <%= team.position %>
+                        <%= team.rank %>
                     </td>
 
-                    <td> <img width="60px" height="60px" src="<%= team.team.crest %>" alt="<%= team.name  %>">
-                        <%= team.team.name %>
-                    </td>
 
+                    <td> <%=team.name %></td>
 
 
                     <td>
-                        <%= team.playedGames %>
+                        <%= team.matches %>
                     </td>
                     <td>
                         <%= team.won %>
                     </td>
                     <td>
-                        <%= team.draw %>
+                        <%= team.drawn %>
                     </td>
                     <td>
                         <%= team.lost %>
                     </td>
                     <td>
-                        <%= team.goalsFor %>
+                        <%= team.goals_scored %>
                     </td>
                     <td>
-                        <%= team.goalsAgainst %>
+                        <%= team.goals_conceded %>
                     </td>
                     <td>
-                        <%= team.goalDifference %>
+                        <%= team.goal_diff %>
                     </td>
                     <td>
                         <%= team.points %>
                     </td>
+                    <td>
+                        <%= team.form %>
+                    </td> 
+
                 </tr>
                 <% }); %>
         <tbody>
