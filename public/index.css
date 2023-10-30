@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-/*@font-face {
-  font-family: 'Orbitron', sans-serif; 
-  src: url(/fonts/AstroSpace.ttf);
-}*/
-
 
 body {
   background-image:url("img/arkaplan.jpg");
@@ -18,8 +13,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
 
 }
 

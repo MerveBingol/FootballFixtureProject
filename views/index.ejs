@@ -19,9 +19,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap"
         rel="stylesheet">
-
-
-
 </head>
 
 <body>
@@ -49,8 +46,6 @@
         </nav>
 
     </header>
-
-    <!-- <img id="arkaplan"  src="img/arkaplan.jpg" alt="Arkaplan sotosu">-->
 
     <ul class="btns">
         <button class="btn" id="fiks"><a href="/index">FİKSTÜR</a></button>
@@ -101,7 +96,7 @@
             });
 
 
-            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL,details) => {
+            let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL, details) => {
                 var newRow = document.createElement('tr');
 
                 var dateCell = document.createElement('td');
@@ -141,7 +136,7 @@
                 var detailsCell = document.createElement('td');
                 detailsCell.className = 'details';
                 var detailsLink = document.createElement('a');
-                detailsLink.href = '#'; // Detaylar sayfasının URL'si buraya gelmeli
+                detailsLink.href = '#';
                 detailsLink.textContent = details;
                 detailsCell.appendChild(detailsLink);
                 newRow.appendChild(detailsCell);
@@ -179,10 +174,10 @@
                 match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
 
                 if (match.score.fullTime.home !== null) {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest,"İY : "+match.score.halfTime.home+"-"+match.score.halfTime.away);
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest, "İY : " + match.score.halfTime.home + "-" + match.score.halfTime.away);
                 }
                 else {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest,"İY :  "+match.score.halfTime.home+"-"+match.score.halfTime.away);
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest, "İY :  " + match.score.halfTime.home + "-" + match.score.halfTime.away);
                 }
             }
 
