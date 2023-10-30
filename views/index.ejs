@@ -84,6 +84,21 @@
         var liveData = JSON.parse('<%= JSON.stringify(livematches)  %>'.replace(/&#(\d+);/g, function (match, dec) { return String.fromCharCode(dec); }));
         console.log(liveData)
 
+        elem = {}
+        elem.text = data[0].season.currentMatchday
+
+        data[0].season.currentMatchday
+
+        document.addEventListener("DOMContentLoaded", function() {
+        var currentMatchday = data[0].season.currentMatchday // data[0].season.currentMatchday değerini al
+
+        // Sayfa yüklendiğinde otomatik olarak currentMatchday değerine göre ilgili haftaya tıklama işlemi
+        var targetWeekButton = document.querySelector('.slide:nth-child(' + currentMatchday + ')');
+        if (targetWeekButton) {
+            targetWeekButton.click(); // Hafta bulunduysa tıkla
+        }
+    });
+
 
         function updatefixture(elem) {
             let table = document.getElementById("fixture");
@@ -94,7 +109,6 @@
             tableRows.forEach(function (row) {
                 row.remove();
             });
-
 
             let create_row = (table, date, homeTeamLogoURL, homeTeam, score, awayTeam, awayTeamLogoURL, details) => {
                 var newRow = document.createElement('tr');
@@ -182,10 +196,17 @@
             }
 
             updatelivematches()
+
+            var allSliderButtons = document.querySelectorAll('.slide');
+    allSliderButtons.forEach(function(button) {
+        button.classList.remove('active');
+    });
+        
+    elem.classList.add('active');
+
         }
 
-        elem = {}
-        elem.text = data[0].season.currentMatchday
+      
 
 
         let todaymatches = data.filter(function (entry) {
