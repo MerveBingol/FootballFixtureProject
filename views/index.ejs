@@ -173,11 +173,11 @@
                 match.homeTeam.name == ('Wolverhampton Wanderers FC') ? match.homeTeam.name = 'Wolverhampton' : match.homeTeam.name
                 match.awayTeam.name == ('Wolverhampton Wanderers FC') ? match.awayTeam.name = 'Wolverhampton' : match.awayTeam.name
 
-                if (match.score.fullTime.home !== null) {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest, "İY : " + match.score.halfTime.home + "-" + match.score.halfTime.away);
+                if (match.score.fullTime.home !== null &&match.score.halfTime.home!==null ) {
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, match.score.fullTime.home + ' - ' + match.score.fullTime.away, match.awayTeam.name, match.awayTeam.crest,"İY : "+match.score.halfTime.home+"-"+match.score.halfTime.away);
                 }
                 else {
-                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest, "İY :  " + match.score.halfTime.home + "-" + match.score.halfTime.away);
+                    create_row(table, formattedDate + " " + getDayOfWeek(match.utcDate), match.homeTeam.crest, match.homeTeam.name, '  ' + '-' + '  ', match.awayTeam.name, match.awayTeam.crest,"İY :  "+" - ");
                 }
             }
 
