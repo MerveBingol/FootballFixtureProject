@@ -12,12 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@1,200&family=Luxurious+Script&family=Titillium+Web:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:ital,wght@1,300&family=Ropa+Sans&family=Russo+One&display=swap"
+        rel="stylesheet">
+
 
 
 </head>
@@ -33,8 +35,9 @@
             </label>
             <ul class="minions-united">
 
-            <li><a class="logo" href="index.ejs"><img src="img/Minions-United.png" alt="premier lig logosu" width="70px" height="90px"></a></li>
-            <li><a class="minions-united" href="#">Minions United</a></li>
+                <li><a class="logo" href="index.ejs"><img src="img/Minions-United.png" alt="premier lig logosu"
+                            width="70px" height="90px"></a></li>
+                <li><a class="minions-united" href="#">Minions United</a></li>
 
             </ul>
 
@@ -45,16 +48,16 @@
 
             </ul>
         </nav>
-       
+
     </header>
-  
-       
+
+
     <ul class="btns">
         <button class="btn" id="fiks"><a href="../index">FİKSTÜR</a></button>
         <button class="btn"><a href="league-table">PUAN DURUMU</a></li>
     </ul>
 
-  
+
 
     <table class="league-table" border="1">
         <tr>
@@ -71,30 +74,55 @@
                       
         </tr>
         <tbody>
-            <% standings.forEach(team => { %>
-                <tr>
-                    
-                    <td><%= team.position %></td>
-                 
-                    <td> <img width="60px" height="60px" src="<%= team.team.crest %>" alt="<%= team.name  %>"> <%= team.team.name %></td>
-                    
-                   
 
-                    <td><%= team.playedGames %></td>
-                    <td><%= team.won %></td>
-                    <td><%= team.draw %></td>
-                    <td><%= team.lost %></td>
-                    <td><%= team.points %></td>
-                    <td><%= team.goalsFor %></td>
-                    <td><%= team.goalsAgainst %></td>
-                    <td><%= team.goalDifference %></td>
+
+            <% standingss.forEach(team=> { %>
+                <tr>
+
+                    <td>
+                        <%= team.rank %>
+                    </td>
+
+
+                    <td> <%=team.name %></td>
+
+
+                    <td>
+                        <%= team.matches %>
+                    </td>
+                    <td>
+                        <%= team.won %>
+                    </td>
+                    <td>
+                        <%= team.drawn %>
+                    </td>
+                    <td>
+                        <%= team.lost %>
+                    </td>
+                    <td>
+                        <%= team.goals_scored %>
+                    </td>
+                    <td>
+                        <%= team.goals_conceded %>
+                    </td>
+                    <td>
+                        <%= team.goal_diff %>
+                    </td>
+                    <td>
+                        <%= team.points %>
+                    </td>
+                    <td>
+                        <%= team.form %>
+                    </td> 
+
                 </tr>
-            <% }); %>
-    <tbody>        
+                <% }); %>
+        <tbody>
     </table>
-    
+
 
 
 
 </body>
+
 </html>
