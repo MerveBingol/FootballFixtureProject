@@ -116,16 +116,15 @@
                     </td>
                   
                     <td class="standings">
-
-                        <% for(var i=1; i <=6; i++) { %>
-                         <% if (team.form[i] ==='W') { %>
-                            <span class="W"">W</span>
-                        <% } else if(team.form[i]==="D"){ %>
+                        <% for(var y=0; y <6; y++) { %>
+                         <% if (standingss[i].form[y] ==='W') { %>
+                            <span class="W">W</span>
+                        <% } else if(standingss[i].form[y]==="D"){ %>
                             <span class="D">D</span>
                         <% } else{ %>
                             <span class="L">L</span>
                         <%  }} %>
-                        
+
                     </td>
 
                 </tr>
