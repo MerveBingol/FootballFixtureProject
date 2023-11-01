@@ -6,8 +6,6 @@ app.use(express.static("public"));
 
 dotenv.config();
 
-const teams=[];
-
 
 app.get('/league-table', async (req, res) => {
 

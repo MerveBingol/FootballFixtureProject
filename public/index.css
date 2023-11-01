@@ -120,18 +120,15 @@ header {
 }
 
 .btns {
-
-bottom: 530px;
-left:5%;
+  bottom: 530px;
+  left: 2%;
   text-align: center;
   list-style: none;
   float: left;
   line-height: 20px;
   text-decoration: none;
-  margin-top: 5%;
- margin-left: 10%;
-
- 
+  margin-top: 2%;
+  margin-left: 1%;
 }
 
 #fiks {
@@ -262,16 +259,21 @@ td.firsthalf {
 }
 .slider-container {
   position: absolute;
-  top:230px;
-  left:390px;
+  top: 190px;
+  left: 190px;
   width: 850px;
-  height:65px;
+  height: 65px;
   margin: 0 auto;
+  margin-left: 10%;
+  margin-top: 2%;
   text-align: center;
-  background-color:#8f1616;
+  background-color: #8f1616;
 }
 
+
+
 .slider {
+  width:85%;
   width:85%;
   display:inline-flex;
   overflow:hidden;
@@ -311,12 +313,12 @@ line-height: 28px;
  /* position:absolute;
    top:320px;
   left:290px;*/
-  margin-top:15% ;
-  margin-left:16%;
+  margin-top:11% ;
+  margin-left:14%;
    width:70%;
-height:55%;
+height:45%;
   opacity:0.7;
-bottom:20px;
+margin-bottom: 10%;
 
   
 }
@@ -324,14 +326,13 @@ bottom:20px;
   padding-left: 5px;
 }
 .league-table{
- top:100px;
-width:60%;
-height:200px;
-  text-align: center;
-  margin: 20%;
-  margin-top: 10%;
-  opacity: 0.7;
-  margin-bottom: 150px;
+  margin-top:10% ;
+  margin-left:16%;
+   width:70%;
+height:45%;
+  opacity:0.7;
+margin-bottom: 10%;
+
 
  
 }
