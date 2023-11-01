@@ -77,40 +77,42 @@
         <tbody>
 
 
-            <% standingss.forEach(team=> { %>
+            <% for(var i=0;i<standings.length;i++) {  %> 
                 <tr>
 
                     <td>
-                        <%= team.rank %>
+                        <%= standingss[i].rank %>
                     </td>
 
 
-                    <td> <%=team.name %></td>
+                    <td >
+                        <img width="60px" height="60px" src="<%=standings[i].team.crest %>" alt="<%= standings[i].team.name  %>">
+                        <%=standingss[i].name %></td>
 
 
                     <td>
-                        <%= team.matches %>
+                        <%= standingss[i].matches %>
                     </td>
                     <td>
-                        <%= team.won %>
+                        <%= standingss[i].won %>
                     </td>
                     <td>
-                        <%= team.drawn %>
+                        <%= standingss[i].drawn %>
                     </td>
                     <td>
-                        <%= team.lost %>
+                        <%= standingss[i].lost %>
                     </td>
                     <td>
-                        <%= team.goals_scored %>
+                        <%= standingss[i].goals_scored %>
                     </td>
                     <td>
-                        <%= team.goals_conceded %>
+                        <%= standingss[i].goals_conceded %>
                     </td>
                     <td>
-                        <%= team.goal_diff %>
+                        <%= standingss[i].goal_diff %>
                     </td>
                     <td>
-                        <%= team.points %>
+                        <%= standingss[i].points %>
                     </td>
                   
                     <td class="standings">
@@ -127,9 +129,10 @@
                     </td>
 
                 </tr>
-                <% }); %>
+                <% } %>
         <tbody>
     </table>
+
 
 </body>
 
