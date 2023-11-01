@@ -120,17 +120,17 @@ header {
 }
 
 .btns {
-position: absolute;
+
 bottom: 530px;
-left:25%;
+left:5%;
   text-align: center;
   list-style: none;
   float: left;
   line-height: 20px;
   text-decoration: none;
-  margin-top: 10px;
-  margin-left: 10%; 
-  z-index: 1;
+  margin-top: 5%;
+ margin-left: 10%;
+
  
 }
 
@@ -209,7 +209,6 @@ table tr {
 .score {
   align-items: center;
 }
-
 
 
 
@@ -421,4 +420,14 @@ color:#000000;
 margin-bottom: 150px;
 
 
+}.league-table .standings .W{
+  color:forestgreen;
+}
+
+.league-table .standings .D{
+  color: #d7c221;
+}
+
+.league-table .standings .L{
+  color: #d82514;
 }
