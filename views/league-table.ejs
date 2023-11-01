@@ -61,64 +61,79 @@
 
     <table class="league-table" border="1">
         <tr>
-            <th>Sıra</th>
-            <th>Takım</th>
-            <th title="Oynanan Maç">O</th>
-            <th title="Galibiyet">G</th>
-            <th title="Beraberlik">B</th>
-            <th title="Mağlubiyet">M</th>
-          
-            <th title="Atılan Gol">A</th>
-            <th title="Yenilen Gol">Y</th>
-            <th title="Averaj">Av</th>
-            <th title="Puan">P</th>
+            <th><div class="tooltip">S<span class="tooltiptext">Sıralama</span></div>
+            <th><div class="tooltip" >T<span class="tooltiptext">Takım</span></div>
+            <th><div class="tooltip">O<span class="tooltiptext">Oynanan</span></div>
+            <th><div class="tooltip">G<span class="tooltiptext">Galibiyet</span></div>
+            <th><div class="tooltip">B<span class="tooltiptext">Berabere</span></div>
+            <th><div class="tooltip">M<span class="tooltiptext">Mağlubiyet</span></div>
+            <th><div class="tooltip">A<span class="tooltiptext">Atılan Gol</span></div>
+            <th><div class="tooltip">Y<span class="tooltiptext">Yenilen Gol</span></div>
+            <th><div class="tooltip">Av<span class="tooltiptext">Averaj</span></div>
+            <th><div class="tooltip">P<span class="tooltiptext">Puan</span></div>
+            <th><div class="tooltip">FT<span class="tooltiptext">Form Tablosu</span></div>
+                      
         </tr>
         <tbody>
-            <% standings.forEach(team=> { %>
+
+
+            <% for(var i=0;i<standings.length;i++) {  %> 
                 <tr>
 
                     <td>
-                        <%= team.position %>
-                    </td>
-
-                    <td> <img width="60px" height="60px" src="<%= team.team.crest %>" alt="<%= team.name  %>">
-                        <%= team.team.name %>
+                        <%= standingss[i].rank %>
                     </td>
 
 
+                    <td >
+                        <img width="60px" height="60px" src="<%=standings[i].team.crest %>" alt="<%= standings[i].team.name  %>">
+                        <%=standingss[i].name %></td>
+
 
                     <td>
-                        <%= team.playedGames %>
+                        <%= standingss[i].matches %>
                     </td>
                     <td>
-                        <%= team.won %>
+                        <%= standingss[i].won %>
                     </td>
                     <td>
-                        <%= team.draw %>
+                        <%= standingss[i].drawn %>
                     </td>
                     <td>
-                        <%= team.lost %>
+                        <%= standingss[i].lost %>
                     </td>
                     <td>
-                        <%= team.goalsFor %>
+                        <%= standingss[i].goals_scored %>
                     </td>
                     <td>
-                        <%= team.goalsAgainst %>
+                        <%= standingss[i].goals_conceded %>
                     </td>
                     <td>
-                        <%= team.goalDifference %>
+                        <%= standingss[i].goal_diff %>
                     </td>
                     <td>
-                        <%= team.points %>
+                        <%= standingss[i].points %>
                     </td>
+                  
+                    <td class="standings">
+                        <% for(var y=0; y <6; y++) { %>
+                         <% if (standingss[i].form[y] ==='W') { %>
+                            <span class="W">W</span>
+                        <% } else if(standingss[i].form[y]==="D"){ %>
+                            <span class="D">D</span>
+                        <% } else{ %>
+                            <span class="L">L</span>
+                        <%  }} %>
+
+                    </td>
+
                 </tr>
-                <% }); %>
+                <% } %>
         <tbody>
     </table>
 
 
-
-
 </body>
+
 
 </html>

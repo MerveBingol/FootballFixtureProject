@@ -120,18 +120,15 @@ header {
 }
 
 .btns {
-position: absolute;
-bottom: 530px;
-left:25%;
+  bottom: 530px;
+  left: 2%;
   text-align: center;
   list-style: none;
   float: left;
   line-height: 20px;
   text-decoration: none;
-  margin-top: 10px;
-  margin-left: 10%; 
-  z-index: 1;
- 
+  margin-top: 2%;
+  margin-left: 1%;
 }
 
 #fiks {
@@ -212,7 +209,6 @@ table tr {
 
 
 
-
 .half {
   border-collapse: collapse;
 }
@@ -263,17 +259,21 @@ td.firsthalf {
 }
 .slider-container {
   position: absolute;
-  top:230px;
-  left:390px;
+  top: 190px;
+  left: 190px;
   width: 850px;
-  height:65px;
+  height: 65px;
   margin: 0 auto;
+  margin-left: 10%;
+  margin-top: 2%;
   text-align: center;
-  background-color:#8f1616;
+  background-color: #8f1616;
 }
 
+
+
 .slider {
-  width:700px;
+  width:85%;
   display:inline-flex;
   overflow:hidden;
   white-space: nowrap;
@@ -284,7 +284,7 @@ td.firsthalf {
 .slide {
   Font-weight:bold;
   width: 50px;
-  height: 30px;
+  line-height: 28px;
   text-align:center;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
@@ -304,14 +304,14 @@ td.firsthalf {
 }
 
 #prev:hover, #next:hover {
-  background-color: #0056b3;
+  background-color: dimgrey;
 }
 #fixture{
  /* position:absolute;
    top:320px;
   left:290px;*/
-  margin-top:15% ;
-  margin-left:16%;
+  margin-top:11% ;
+  margin-left:14%;
    width:70%;
 height:45%;
   opacity:0.7;
@@ -323,7 +323,7 @@ margin-bottom: 10%;
   padding-left: 5px;
 }
 .league-table{
-  margin-top:15% ;
+  margin-top:10% ;
   margin-left:16%;
    width:70%;
 height:45%;
@@ -411,7 +411,23 @@ color:#000000;
 }
 
 .active {
-  background-color: #3498db; /* veya istediğiniz bir renk */
+  background-color:#383a0f; /* veya istediğiniz bir renk */
   color: #fff; /* Tıklanan haftanın metin rengi */
 }
 
+
+.matches{
+margin-bottom: 150px;
+
+
+}.league-table .standings .W{
+  color:forestgreen;
+}
+
+.league-table .standings .D{
+  color: #d7c221;
+}
+
+.league-table .standings .L{
+  color: #d82514;
+}

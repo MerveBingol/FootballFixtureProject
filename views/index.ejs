@@ -48,8 +48,8 @@
     </header>
 
     <ul class="btns">
-        <button class="btn" id="fiks"><a href="/index">FİKSTÜR</a></button>
-        <button class="btn"><a href="../league-table">PUAN DURUMU</a></li>
+        <button  class="btn" id="fiks"><a href="index">FİKSTÜR</a></button>
+        <button  class="btn"><a href="../league-table">PUAN DURUMU</a></li>
     </ul>
 
 
@@ -87,7 +87,6 @@
         elem = {}
         elem.text = data[0].season.currentMatchday
 
-        data[0].season.currentMatchday
 
         document.addEventListener("DOMContentLoaded", function() {
         var currentMatchday = data[0].season.currentMatchday // data[0].season.currentMatchday değerini al
@@ -98,8 +97,6 @@
             targetWeekButton.click(); // Hafta bulunduysa tıkla
         }
     });
-
-
         function updatefixture(elem) {
             let table = document.getElementById("fixture");
             let matchday = parseInt(elem.text)
