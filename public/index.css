@@ -272,21 +272,23 @@ td.firsthalf {
 }
 
 .slider {
-  width:700px;
+  width:85%;
   display:inline-flex;
   overflow:hidden;
   white-space: nowrap;
  padding-left: 5px;
  
+ 
 }
 
 .slide {
   Font-weight:bold;
-  width: 50px;
-  height: 30px;
+ width: 50px;
+line-height: 28px;
+
   text-align:center;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:'Arial', sans-serif;
 
 }
 .slide:hover{
@@ -303,7 +305,7 @@ td.firsthalf {
 }
 
 #prev:hover, #next:hover {
-  background-color: #0056b3;
+  background-color:dimgrey;
 }
 #fixture{
  /* position:absolute;
@@ -411,7 +413,7 @@ color:#000000;
 }
 
 .active {
-  background-color: #3498db; /* veya istediğiniz bir renk */
+  background-color:#383a0f; /* veya istediğiniz bir renk */
   color: #fff; /* Tıklanan haftanın metin rengi */
 }
 
