@@ -71,6 +71,7 @@
             <th><div class="tooltip">Y<span class="tooltiptext">Yenilen Gol</span></div>
             <th><div class="tooltip">Av<span class="tooltiptext">Averaj</span></div>
             <th><div class="tooltip">P<span class="tooltiptext">Puan</span></div>
+            <th><div class="tooltip">FT<span class="tooltiptext">Form Tablosu</span></div>
                       
         </tr>
         <tbody>
@@ -111,18 +112,26 @@
                     <td>
                         <%= team.points %>
                     </td>
-                    <td>
-                        <%= team.form %>
-                    </td> 
+                  
+                    <td class="standings">
+
+                        <% for(var i=1; i <=6; i++) { %>
+                         <% if (team.form[i] ==='W') { %>
+                            <span class="W"">W</span>
+                        <% } else if(team.form[i]==="D"){ %>
+                            <span class="D">D</span>
+                        <% } else{ %>
+                            <span class="L">L</span>
+                        <%  }} %>
+                        
+                    </td>
 
                 </tr>
                 <% }); %>
         <tbody>
     </table>
 
-
-
-
 </body>
+
 
 </html>
